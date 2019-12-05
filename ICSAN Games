@@ -1,0 +1,82 @@
+from tkinter import *
+from tkinter import filedialog
+import subprocess
+
+def test(event):
+    global myimg
+    global can2
+    root.filename =  filedialog.askopenfilename(initialdir = "/Users/rvanslingerland/ICSAN Games",title = "Select file",filetypes = (("py files","*.py"),("all files","*.*")))
+    myimage = Image.open(root.filename)
+    myimage = myimage.resize((200, 150), Image.ANTIALIAS)
+    myimg = ImageTk.PhotoImage(myimage)
+    can2.create_image(0, 0, image = myimg, anchor = NW)
+
+root = Tk()
+root.title("GameHub Games")
+root.geometry("500x350")
+
+
+topframe = Frame(root,bg="green")
+topframe.pack(fill=X)
+
+scrollbar = Scrollbar(root)
+scrollbar.pack(side=RIGHT, fill=Y)
+
+can1 = Canvas(topframe,height="20",bg="green",highlightthickness=0)
+can1.create_line(0, 5, 20, 5,fill="white")
+can1.create_line(0, 10, 20, 10,fill="white")
+can1.create_line(0, 15, 20, 15,fill="white")
+can1.bind("<Button-1>",test )
+can1.pack(side=LEFT, padx=5, pady=5)
+can1.pack(side=LEFT, fill=BOTH)
+
+spaceframe = Frame(root,height=10)
+spaceframe.pack(fill=X)
+
+invisoframe = Frame(root,width=200,height=250) # invisible container frame
+invisoframe.pack()
+titleheight = 100 # set variable to height of title frame
+titleframe = Frame(invisoframe,width=1000,height=titleheight,bg="#e39b17") # top title frame
+titleframe.pack(fill=X) # fill entire container frame
+titleframe.pack_propagate(0) # enforce frame size, do not change to content size
+title = Label(titleframe,text="WELCOME TO ICSAN GAMES!",fg="white",bg="#e39b17")
+title.config(font=("Arial", 32))
+title.pack(ipady=titleheight/2) # set internal padding to place title in centre
+contentheight = 150
+contentframe = Frame(invisoframe,width=200,height=contentheight,bg="#f7dcab")
+contentframe.pack(fill=X)
+contentframe.pack_propagate(0)
+content = Label(contentframe,text="INSTRUCTIONS: \n \n 1) Click the game below you want to play \n \n 2) Read game instructions below!",bg="#f7dcab")
+content.pack(ipady=contentheight/2)
+
+invisoframe = Frame(root,width=200,height=250) # invisible container frame
+invisoframe.pack()
+titleheight = 100 # set variable to height of title frame
+titleframe = Frame(invisoframe,width=1000,height=titleheight,bg="#e39b17") # top title frame
+titleframe.pack(fill=X) # fill entire container frame
+titleframe.pack_propagate(0) # enforce frame size, do not change to content size
+title = Label(titleframe,text="The Game of War",fg="white",bg="#e39b17")
+title.config(font=("Arial", 32))
+title.pack(ipady=titleheight/2) # set internal padding to place title in centre
+contentheight = 150
+contentframe = Frame(invisoframe,width=200,height=contentheight,bg="#f7dcab")
+contentframe.pack(fill=X)
+contentframe.pack_propagate(0)
+content = Label(contentframe,text="HOW TO PLAY: \n \n 1) Click the game title above to open the game \n \n 2) Enter you name \n \n 3) Enter how many rounds you want to play \n \n 4) Press enter to continue \n \n 5)",bg="#f7dcab")
+content.pack(ipady=contentheight/2)
+
+invisoframe = Frame(root,width=200,height=250) # invisible container frame
+invisoframe.pack()
+titleheight = 100 # set variable to height of title frame
+titleframe = Frame(invisoframe,width=1000,height=titleheight,bg="#e39b17") # top title frame
+titleframe.pack(fill=X) # fill entire container frame
+titleframe.pack_propagate(0) # enforce frame size, do not change to content size
+title = Label(titleframe,text="What is down must go up because thats the point of the game",fg="white",bg="#e39b17")
+title.config(font=("Arial", 32))
+title.pack(ipady=titleheight/2) # set internal padding to place title in centre
+contentheight = 150
+contentframe = Frame(invisoframe,width=200,height=contentheight,bg="#f7dcab")
+contentframe.pack(fill=X)
+contentframe.pack_propagate(0)
+content = Label(contentframe,text="",bg="#f7dcab")
+content.pack(ipady=contentheight/2)
